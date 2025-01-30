@@ -13,10 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Terraform
+    - name: Set up terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 1.3.7 
@@ -29,17 +30,25 @@ jobs:
         echo "aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
         echo "region = ${{ secrets.AWS_REGION }}" >> ~/.aws/config
 
-    - name: Terraform Init
+    - name: List files in terraform directory
+      run: ls -al terraform
+
+    - name: terraform init
       run: terraform init
+      working-directory: terraform
 
-    - name: Terraform Validate
+    - name: terraform validate
       run: terraform validate
+      working-directory: terraform
 
-    - name: Terraform Plan
+    - name: terraform plan
       run: terraform plan -var-file="terraform.tfvars"
+      working-directory: terraform
 
-    - name: Terraform Apply
+    - name: terraform apply
       run: terraform apply -auto-approve -var-file="terraform.tfvars"
+      working-directory: terraform
 
-    - name: Terraform Output
+    - name: terraform output
       run: terraform output
+      working-directory: terraform
