@@ -25,6 +25,8 @@ module "route_table" {
   vpc_id           = module.vpc.vpc_id
   public_subnet_id = module.subnet.public_subnet_id
   gateway_id       = module.internet_gateway.internet_gateway_id
+  private_subnet_id = module.subnet.private_subnet_id
+  nat_gateway_id    = module.nat_gateway.nat_gateway_id
 }
 
 module "private_route_table" {
