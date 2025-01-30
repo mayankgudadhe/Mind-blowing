@@ -56,5 +56,5 @@ module "nat_gateway" {
   source             = "./modules/nat_gateway"
   public_subnet_id   = module.subnet.public_subnet_id
   eip_allocation_id  = module.nat_eip.eip_allocation_id 
-  vpc_id            = module.vpc.vpc_id
+
 }
