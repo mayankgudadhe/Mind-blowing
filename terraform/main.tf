@@ -31,7 +31,7 @@ module "private_route_table" {
   source           = "./modules/route_table"
   vpc_id           = module.vpc.vpc_id
   private_subnet_id = module.subnet.private_subnet_id
-  nat_gateway_id    = module.nat_gateway.nat_gateway_id  
+  gateway_id    = module.nat_gateway.nat_gateway_id  
   public_subnet_id = module.subnet.public_subnet_id  
 }
 
