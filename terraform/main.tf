@@ -44,7 +44,7 @@ module "github_runner" {
   ec2_role_arn         = module.iam_role.iam_role_arn
 }
 module "nat_gateway" {
-  source            = "./modules/ntgw"  
+  source            = "./modules/nat_gateway"  
   public_subnet_id  = module.subnet.public_subnet_id
   elastic_ip        = module.nat_eip.public_ip  
   vpc_id            = module.vpc.vpc_id
