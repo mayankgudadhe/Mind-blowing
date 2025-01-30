@@ -50,9 +50,9 @@ module "github_runner" {
   github_repo          = var.github_repo
   ec2_role_arn         = module.iam_role.iam_role_arn
 }
+
 module "nat_gateway" {
-  source            = "./modules/nat_gateway"  
-  public_subnet_id  = module.subnet.public_subnet_id
-  elastic_ip        = module.nat_eip.public_ip  
-  vpc_id            = module.vpc.vpc_id
+  source             = "./modules/ntgw"
+  public_subnet_id   = module.subnet.public_subnet_id
+  eip_allocation_id  = module.nat_eip.eip_allocation_id 
 }
