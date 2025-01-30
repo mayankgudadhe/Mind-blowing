@@ -34,3 +34,7 @@ variable "github_repo" {
   description = "GitHub repository name"
   type        = string
 }
+variable "ec2_role_arn" {
+  description = "The IAM role ARN to associate with the EC2 instance"
+  type        = string
+}
