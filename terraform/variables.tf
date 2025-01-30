@@ -66,3 +66,7 @@ variable "nat_gateway_enabled" {
   type        = bool
   default     = true
 }
+variable "ec2_role_arn" {
+  description = "IAM role ARN for the EC2 instance"
+  type        = string
+}

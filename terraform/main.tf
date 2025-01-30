@@ -27,11 +27,12 @@ module "route_table" {
   gateway_id       = module.internet_gateway.internet_gateway_id
 }
 
-module "private_route_table" {  
-  source             = "./modules/route_table"
-  vpc_id             = module.vpc.vpc_id
-  private_subnet_id  = module.subnet.private_subnet_id
-  nat_gateway_id     = module.nat_gateway.nat_gateway_id  
+module "private_route_table" {
+  source           = "./modules/route_table"
+  vpc_id           = module.vpc.vpc_id
+  private_subnet_id = module.subnet.private_subnet_id
+  gateway_id       = module.nat_gateway.nat_gateway_id  
+  public_subnet_id = module.subnet.public_subnet_id  
 }
 
 module "security_group" {
@@ -55,4 +56,5 @@ module "nat_gateway" {
   source             = "./modules/nat_gateway"
   public_subnet_id   = module.subnet.public_subnet_id
   eip_allocation_id  = module.nat_eip.eip_allocation_id 
+  vpc_id            = module.vpc.vpc_id
 }
