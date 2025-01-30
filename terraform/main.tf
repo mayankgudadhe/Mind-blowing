@@ -52,7 +52,7 @@ module "github_runner" {
 }
 
 module "nat_gateway" {
-  source             = "./modules/ntgw"
+  source             = "./modules/nat_gateway"
   public_subnet_id   = module.subnet.public_subnet_id
   eip_allocation_id  = module.nat_eip.eip_allocation_id 
 }
